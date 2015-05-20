@@ -1548,16 +1548,3 @@ function think_filter(&$value){
 function in_array_case($value,$array){
     return in_array(strtolower($value),array_map('strtolower',$array));
 }
-
-/**
- * 获取配置信息.
- * 
- * @author GenialX
- * @param string $filename Conf文件夹中的配置文件名称
- *
- * @return array
- */
-function get_config($filename = 'web.ini', $process_sections = true) {
-    $filepath = dirname((dirname(dirname(__FILE__)))) . "/Conf/" . strtolower($filename);
-    return parse_ini_file($filepath, $process_sections);
-}
