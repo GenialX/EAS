@@ -32,6 +32,13 @@ abstract class CommonController extends Controller implements AdminModel{
 	protected $data = array();
 	
 	/**
+	 * 标志是否渲染界面.
+	 * 
+	 * @var bool
+	 */
+	protected $_isDisplay = true;
+	
+	/**
 	 * Validation of the current user.
 	 * 
 	 * @author genialx
@@ -47,8 +54,8 @@ abstract class CommonController extends Controller implements AdminModel{
 				
 				if(CONTROLLER_NAME == 'Login') {
 					$this->_goAdmin();
+					$this->_isDisplay = false;
 				}
-				
 		}
 	}
 	
@@ -393,4 +400,21 @@ abstract class CommonController extends Controller implements AdminModel{
 	            break;
 	    }
 	}
+	
+	/**
+	 * 模板显示 调用内置的模板引擎显示方法，
+	 * @access protected
+	 * @param string $templateFile 指定要调用的模板文件
+	 * 默认为空 由系统自动定位模板文件
+	 * @param string $charset 输出编码
+	 * @param string $contentType 输出类型
+	 * @param string $content 输出内容
+	 * @param string $prefix 模板缓存前缀
+	 * @return void
+	 */
+	protected function display($templateFile='',$charset='',$contentType='',$content='',$prefix='') {
+	    if($this->_isDisplay === false) return false;
+	    $this->view->display($templateFile,$charset,$contentType,$content,$prefix);
+	}
+	
 }

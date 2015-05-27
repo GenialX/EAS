@@ -1053,13 +1053,13 @@ var Main = function() {"use strict";
 				$('#skin_color').attr("rel", "stylesheet");
 
 			}
-			$('#skin_color').attr("href", _public_path + "/css/themes/theme-" + $(this).attr('id') + ".css");
+			$('#skin_color').attr("href", _public_path + "/Common/css/themes/theme-" + $(this).attr('id') + ".css");
 			switch ($(this).attr('id')) {
 				case "style3":
-					$(".navbar-brand img").attr("src", _public_path + "/images/logo_dark.png");
+					$(".navbar-brand img").attr("src", _public_path + "/Common/images/logo_dark.png");
 					break;
 				default:
-					$(".navbar-brand img").attr("src", _public_path + "/images/logo.png");
+					$(".navbar-brand img").attr("src", _public_path + "/Common/images/logo.png");
 					break;
 			};
 		});

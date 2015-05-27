@@ -2,11 +2,7 @@
 namespace Student\Controller;
 use Common\Controller\CommonController;
 /**
- * Login controller.
- * @author genialx
- * 
- * @todo the verify code;record login data.
- *
+ * Student Index controller.
  */
 class IndexController extends CommonController{
 	
@@ -15,8 +11,8 @@ class IndexController extends CommonController{
 		$this->_validate();
 	}
 	
-	public function index() { echo 'hello world';exit; }
-	
-	
+	public function index() {
+	    $this->display();
+	}
 	
 }

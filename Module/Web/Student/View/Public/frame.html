@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Template Name: Rapido - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.0 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+	<!--<![endif]-->
+	<!-- start: HEAD -->
+	<include file="Public/head" self_public="[self_public]"/>
+	<!-- end: HEAD -->
+	<!-- start: BODY -->
+	<body>
+		<!-- start: SLIDING BAR (SB) -->
+		<include file="Public/sliding-bar" />
+		<!-- end: SLIDING BAR -->
+		<div class="main-wrapper">
+			<!-- start: TOPBAR -->
+			<include file="Public/top-bar" />
+			<!-- end: TOPBAR -->
+			<!-- start: PAGESLIDE LEFT -->
+			<include file="Public/pageslide-left" />
+			<!-- end: PAGESLIDE LEFT -->
+			<!-- start: PAGESLIDE RIGHT -->
+			<include file="Public/pageslide-right" />
+			<!-- end: PAGESLIDE RIGHT -->
+			<!-- start: MAIN CONTAINER -->
+			<include file="[self_public]/main" />
+			<!-- end: MAIN CONTAINER -->
+			<!-- start: FOOTER -->
+			<include file="Public/footer" />
+			<!-- end: FOOTER -->
+			<!-- start: SUBVIEW SAMPLE CONTENTS -->
+ 			<include file="Public/subview-sample-contents" />
+			<!-- end: SUBVIEW SAMPLE CONTENTS -->
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+		<include file="Public/main-javascripts" />
+		<!-- end: MAIN JAVASCRIPTS -->
+		<!-- start: JAVASCRIPTS REQUIRED FOR SUBVIEW CONTENTS -->
+		<include file="Public/subview-javascripts" />
+		<!-- end: JAVASCRIPTS REQUIRED FOR SUBVIEW CONTENTS -->
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<include file="[self_public]/footer" />
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- start: CORE JAVASCRIPTS  -->
+		<script src="__STATIC__/Common/js/main.js"></script>
+		<!-- end: CORE JAVASCRIPTS  -->
+		<script>
+			jQuery(document).ready(function() {
+				var public_path = '__STATIC__';
+				var cn      = '{:C("LANG")}';
+                var root    = '__MODULE__';
+                if(cn == "ZH-CN") cn = true;
+                else cn = false;
+				// Get lang object.
+				var lang = getLang();
+				Main.init(public_path,cn,lang);
+				SVExamples.init();
+			});
+			
+			function getLang() {
+				var lang = new Object();
+				lang.collapse = "{:C("LANG_COLLAPSE")}";
+				lang.expand = "{:C("LANG_EXPAND")}";
+				return lang;
+			}
+		</script>
+	</body>
+	<!-- end: BODY -->
+</html>
