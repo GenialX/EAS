@@ -38,7 +38,11 @@ var Login = function() {
 			$.cookie("isRemember",isRemember);
 			if(isRemember) {
 				$.cookie("ebes0csjd",$("#ebes0csjd-input").val());
-				$.cookie("do98jf7hs",$("#do98jf7hs-input").val());
+				if($("#do98jf7hs-input").val().length != 32) {
+					var pwd = $.md5($("#do98jf7hs-input").val());
+					$("#do98jf7hs-input").val(pwd);
+					$.cookie("do98jf7hs",pwd);
+				}
 			} else {
 				$.cookie("ebes0csjd",null);
 				$.cookie("do98jf7hs",null);

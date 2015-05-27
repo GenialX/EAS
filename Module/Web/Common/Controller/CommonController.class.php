@@ -36,17 +36,17 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 
 	 * @author genialx
 	 */
-	protected function _validate($type = self::ADMIN_SESSION_ID) {
-		if(!is_log($type)) { // 未登录
+	protected function _validate() {
+		if(!is_log()) { // 未登录
 				if(CONTROLLER_NAME != 'Login') {
-					redirect(__MODULE__ . "/Login/index");
+					$this->redirect("/Login/Login/index");
 				}
 			} else { // 已登录
 				if(ACTION_NAME == 'logOut') return true;
 				if(ACTION_NAME == 'lock') return true;
 				
 				if(CONTROLLER_NAME == 'Login') {
-					redirect(__MODULE__ . "/Index/index");
+					$this->_goAdmin();
 				}
 				
 		}
@@ -375,4 +375,22 @@ abstract class CommonController extends Controller implements AdminModel{
 		return $C2M->{$controller};
 	}
 	
+	/**
+	 * 跳转到管理主界面.
+	 * 
+	 */
+	protected function _goAdmin() {
+	    $type = session(AdminModel::ADMIN_SESSION_TYPE);
+	    switch($type) {
+	        case AdminModel::ADMIN_SESSION_STUDENT_TYPE:
+	            $this->success(C("LANG_LOGIN_SUCCESSFULLY"),  "/Student/Index/index");
+	            break;
+	        case AdminModel::ADMIN_SESSION_TEACHER_TYPE:
+	            $this->success(C("LANG_LOGIN_SUCCESSFULLY"),  "/Teacher/Index/index");
+	            break;
+	        default:
+	            $this->redirect( __MODULE__ .  "/Login/index");
+	            break;
+	    }
+	}
 }

@@ -14,7 +14,7 @@ class LoginController extends CommonController{
 	
 	public function __construct() {
 		parent::__construct();
-		$this->_validate(self::ADMIN_SESSION_ID);
+		$this->_validate();
 	}
 	
 	/**
@@ -33,8 +33,8 @@ class LoginController extends CommonController{
 		if(!count($_POST)) {
 			$this->display('index');
 		} else {
-			if(login(I('post.ebes0csjd'), md5(I('post.do98jf7hs')), self::ADMIN_SESSION_ID)) {
-				$this->success(C("LANG_LOGIN_SUCCESSFULLY"),  __MODULE__ .  "/Index/index");
+			if(login(I('post.ebes0csjd'), I('post.do98jf7hs'))) {
+				$this->_goAdmin();
 			} else {
 				$this->error(C("LANG_LOGIN_FAILED"));
 				$this->display('index');
@@ -43,7 +43,7 @@ class LoginController extends CommonController{
 	}
 	
 	public function logOut() {
-		log_out(self::ADMIN_SESSION_ID);
+		log_out();
 		$this->success(C("LANG_LOG_OUT_SUCCESSFULLY"), __MODULE__ . "/Login/index");
 	}
 	
@@ -56,9 +56,9 @@ class LoginController extends CommonController{
 	}
 	
 	public function lock() {
-		$id = get_admin_id(self::ADMIN_SESSION_ID);
+		$id = get_admin_id();
 		if(!$id) $this->redirect(__MODULE__ . "/Login/index");
-		log_out(self::ADMIN_SESSION_ID);
+		log_out();
 		$admin = D("Admin")->where(array("id"=>$id))->find();
 		$this->assign("admin", $admin);
 		$this->display();

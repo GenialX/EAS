@@ -12,10 +12,24 @@ $result = array(
     'CONTROLLER_MODEL_MAP'  =>  $config['MODULE']['CONTROLLER_MODEL_MAP'],
     'LANG'                  =>  $config['APP']['LANG'],
     
+    /** DB配置 **/
+    'DB_TYPE'               => $config['DB']['TYPE'],
+    'DB_HOST'               => $config['DB']['HOST'],
+    'DB_NAME'               => $config['DB']['NAME'],
+    'DB_USER'               => $config['DB']['USER'],
+    'DB_PWD'                => $config['DB']['PWD'],
+    'DB_PORT'               => $config['DB']['PORT'],
+    'DB_PREFIX'             => $config['DB']['PREFIX'],
+    'DB_CHARSET'            => $config['DB']['CHARSET'],
+    
     /** 视图配置 **/
-    'TMPL_PARSE_STRING' =>  array(
+    'TMPL_PARSE_STRING'     =>  array(
         '__STATIC__' => $config['PATH']['STATIC'],
-    ),
+    ),    
+    
+    /** 路由配置 **/
+    'URL_HTML_SUFFIX'       => $config['URL']['HTML_SUFFIX'],
+    
 );
 /** 语言包 **/
 $result = array_merge($lang, $result);

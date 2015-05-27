@@ -63,9 +63,9 @@ function get_lang($filename = 'Web/Common.php', $lang = 'ZH-CN', $isArr = false,
  * @param string $type 用户类型
  * @return boolean
  */
-function is_log($type = AdminModel::ADMIN_SESSION_ID) {
-    if(session("?{$type}")) return true;
-    return false;
+function is_log() {
+    $key = AdminModel::ADMIN_SESSION_ID;
+    return session("?{$key}");
 }
 
 /**
@@ -73,8 +73,9 @@ function is_log($type = AdminModel::ADMIN_SESSION_ID) {
  *
  * @return mixed|boolean
  */
-function get_admin_id($type = AdminModel::ADMIN_SESSION_ID) {
-    if(session("?{$type}")) return session("{$type}");
+function get_admin_id() {
+    $key = AdminModel::ADMIN_SESSION_ID;
+    if(session("?{$key}")) return session("{$key}");
     return false;
 }
 
@@ -82,27 +83,41 @@ function get_admin_id($type = AdminModel::ADMIN_SESSION_ID) {
  * 设置登陆标记（session）.
  *
  * @author genialx
- * @param string $type
- * @param string $value
+ * @param string $id ID的类型
  * @return boolean
  */
-function set_log($type = null, $value = null) {
-    if(!isset($value)) return false;
+function set_log($id = null) {
+
+    if(!isset($id)) return false;
+    
+    /** ID **/
+    $key = AdminModel::ADMIN_SESSION_ID;
+    if(session("?{$key}")) session($key, null);
+    Log::record("[SESSION] index: {$key} value: {$id}", Log::INFO);
+    session($key, $id);
+    
+    /** Type **/
+    $type = AdminModel::ADMIN_SESSION_TYPE;
+    $data = D('admin')->field('type')->where(array('id' => $id))->find();
     if(session("?{$type}")) session($type, null);
-    Log::record("[SESSION] index: {$type} value: {$value}", Log::INFO);
-    session($type, $value);
+    Log::record("[SESSION] index: {$type} value: {$data['type']}", Log::INFO);
+    session($type, $data['type']);
+    
     return true;
 }
 
 /**
  * 登出.
  * @author genialx
- * @param string $type
+ * @param string $id
  * @return boolean
  */
-function log_out($type = null) {
-    if(session("?{$type}")) return session($type, null);
-    return false;
+function log_out() {
+    $key    = AdminModel::ADMIN_SESSION_ID;
+    $type   = AdminModel::ADMIN_SESSION_TYPE;
+    if(session("?{$key}")) session($key, null);
+    if(session("?{$type}")) session($type, null);
+    return true;
 }
 
 /**
@@ -113,9 +128,9 @@ function log_out($type = null) {
  * @param string $type
  * @return boolean
  */
-function login($username, $userpass, $type = AdminModel::ADMIN_SESSION_ID) {
+function login($username, $userpass) {
     $data = D('admin')->field('id')->where(array('account'=>$username, 'password'=>$userpass))->find();
-    if(count($data) > 0) return set_log($type, $data['id']);
+    if(count($data) > 0) return set_log($data['id']);
     return false;
 }
 
