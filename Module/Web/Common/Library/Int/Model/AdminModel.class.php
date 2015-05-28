@@ -11,5 +11,5 @@ interface AdminModel {
 	const ADMIN_SESSION_STUDENT_TYPE = 1;
 	
 	const ADMIN_SESSION_TEACHER_TYPE = 2;
-	
+
 }

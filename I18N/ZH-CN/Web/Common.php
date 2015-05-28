@@ -42,108 +42,19 @@ return array (
 					'sub_map' => array(),
 			),
 			2 => array(
-						'name' => '内容',
-						'controller' => 'Content',
-						'action' => 'index',
+						'name' => '实验预约',
+						'controller' => 'Appointment',
+						'action' => 'manage',
 						'icon_class' => 'fa fa-archive',
-						'sub_map' => array(
-								1 => array(
-										'name' => '文章',
-										'controller' => 'Post',
-										'action' => 'index',
-										'icon_class' => 'fa fa-book',
-										'sub_map' => array(
-												1 => array(
-														'name' => '管理文章',
-														'controller' => 'Post',
-														'action' => 'manage',
-														'icon_class' => 'fa fa-list-ol',
-														'sub_map' => array(),
-												),
-												2 => array(
-														'name' => '撰写新文章',
-														'controller' => 'Post',
-														'action' => 'add',
-														'icon_class' => 'fa fa-pencil-square-o',
-														'sub_map' => array(),
-												),
-										),
-								),
-								2 => array(
-										'name' => '页面',
-										'controller' => 'Page',
-										'action' => 'index',
-										'icon_class' => 'fa fa-file-text-o',
-										'sub_map' => array(
-												1 => array(
-														'name' => '页面管理',
-														'controller' => 'Page',
-														'action' => 'manage',
-														'icon_class' => 'fa fa-list-ol',
-														'sub_map' => array(),
-												),
-												2 => array(
-														'name' => '新增页面',
-														'controller' => 'Page',
-														'action' => 'add',
-														'icon_class' => 'fa fa-pencil-square-o',
-														'sub_map' => array(),
-												),
-										),
-								),
-								3 => array(
-										'name' => '栏目',
-										'controller' => 'Category',
-										'action' => 'index',
-										'icon_class' => 'fa fa-th-list',
-										'sub_map' => array(
-												1 => array(
-														'name' => '栏目管理',
-														'controller' => 'Category',
-														'action' => 'manage',
-														'icon_class' => 'fa fa-list-ol',
-														'sub_map' => array(),
-												),
-												2 => array(
-														'name' => '新增栏目',
-														'controller' => 'Category',
-														'action' => 'add',
-														'icon_class' => 'fa fa-pencil-square-o',
-														'sub_map' => array(),
-												),
-										),
-								),
-						),
+						'sub_map' => array(),
 			),
 			3 => array(
-						'name' => '反馈',
-						'action' => 'index',
-						'controller' => 'Feedback',
-						'icon_class' => 'fa fa-envelope-o',
-						'sub_map' => array(
-								1 => array(
-										'name' => '留言',
-										'controller' => 'Comment',
-										'action' => 'manage',
-										'icon_class' => 'fa fa-comments-o',
-										'sub_map' => array(),
-						),
-				),
-			),
-			4 => array(
 						'name' => '设置',
 						'action' => 'index',
 						'controller' => 'Setting',
 						'icon_class' => 'fa fa-cogs',
 						'sub_map' => array(
 								1 => array(
-										'name' => '网站',
-										'controller' => 'Site',
-										'action' => 'index',
-										'icon_class' => 'fa  fa-desktop',
-										'sub_map' => array(),
-								),
-								2 => array(
 										'name' => '个人资料',
 										'controller' => 'Profile',
 										'action' => 'index',
@@ -155,19 +66,21 @@ return array (
 		),
 		
 		/* top bar tpl */
-		'LANG_MY_PROFILE' => '个人资料',
-		'LANG_MY_MESSAGES' => '消息中心',
-		'LANG_LOCK_SCREEN' => '锁定后台',
-		'LANG_LOG_OUT' => '退出',
+		'LANG_MY_PROFILE'     => '个人资料',
+		'LANG_MY_MESSAGES'    => '消息中心',
+		'LANG_LOCK_SCREEN'    => '锁定后台',
+		'LANG_LOG_OUT'        => '退出',
 		'LANG_QUICK_ENTRANCE' => '快捷入口',
-		'LANG_LAST_REPLY' => '最新回复',
-		'LANG_NEW_POST' => '新增文章', 
-		'LANG_NEW_PAGE' => '新增页面',
-		'LANG_NEW_CATEGORY' => '新增栏目',
-		'LANG_SETTING_SITE' => 'SEO设置',
+		'LANG_LAST_REPLY'     => '最新回复',
+		'LANG_NEW_POST'       => '新增文章', 
+		'LANG_NEW_PAGE'       => '新增页面',
+		'LANG_NEW_CATEGORY'   => '新增栏目',
+		'LANG_SETTING_SITE'   => 'SEO设置',
 		
 		/* Common */
-		'LANG_ONE_KEY_DELETE'       => '一键删除',
+		'LANG_ONE_KEY_DELETE'                  => '一键删除',
+        'LANG_ADMIN_SESSION_STUDENT_TYPE_NAME' => '同学',
+        'LANG_ADMIN_SESSION_TEACHER_TYPE_NAME' => '教师',
 		
 		/* Illegal Controller */
 		'LANG_ILLEGAL_WELCOME'	    => '抱歉，您的版本不是完整版，请联系管理员！',
@@ -191,7 +104,14 @@ return array (
 		/* Index controller */
 		
 		/* Post manage */
-		'LANG_COMMENT_COUNT' => '回复数',
-		'LANG_POST_CREATE_TIME' => '撰写时间',
+		'LANG_COMMENT_COUNT'          => '回复数',
+		'LANG_POST_CREATE_TIME'       => '撰写时间',
+    
+        /* Student Index */
+        'LANG_SI_WELCOME_TITLE'       => '欢迎来到EAS管理中心',
+        'LANG_SI_WELCOME_CONTENT'     => "
+            欢迎您，%s。这里是“自动化工程实训中心实验预约系统”的管理后台。                                
+        ",
+        'LANG_SI_EAS_NEWS_TITME'      => "官方公告",
 		
 );

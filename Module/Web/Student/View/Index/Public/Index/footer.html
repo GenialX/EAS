@@ -7,9 +7,10 @@
 <script src="__STATIC__/Common/plugins/nvd3/src/models/stackedAreaChart.js"></script>
 <script src="__STATIC__/Common/plugins/jquery.sparkline/jquery.sparkline.js"></script>
 <script src="__STATIC__/Common/plugins/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-<script src="__STATIC__/Common/js/index.js"></script>
+<script src="__STATIC__/Student/JS/index-index.js"></script>
 <script>
 	jQuery(document).ready(function() {
-		Index.init();
+		var easAPI = "{:C("API_EAS")}";
+		Index.init(easAPI);
 	});
 </script>

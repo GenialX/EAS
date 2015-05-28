@@ -13,11 +13,12 @@
 								<img src="__STATIC__/Common/images/avatar-1.jpg" alt="">
 							</div>
 							<div class="inline-block">
-								<h5 class="no-margin"> {:C("LANG_WELCOME")} </h5>
 								<h4 class="no-margin"> {$data['admin']['nickname']} </h4>
-								<a class="btn user-options sb_toggle">
-									<i class="fa fa-cog"></i>
-								</a>
+								<!-- 
+									<a class="btn user-options sb_toggle">
+	                                    <i class="fa fa-cog"></i>
+	                                </a>
+								 -->
 							</div>
 						</div>
 						<!-- start: MAIN NAVIGATION MENU -->
@@ -30,12 +31,12 @@
 				</div>
 				<div class="slide-tools">
 					<div class="col-xs-6 text-left no-padding">
-						<a class="btn btn-sm status" href="#">
+						<a style="display:none;" class="btn btn-sm status" href="#">
 							{:C("LANG_STATUS")} <i class="fa fa-dot-circle-o text-green"></i> <span>{:C("LANG_ONLINE")}</span>
 						</a>
 					</div>
 					<div class="col-xs-6 text-right no-padding">
-						<a class="btn btn-sm log-out text-right" href="__MODULE__/Login/logOut">
+						<a class="btn btn-sm log-out text-right" href="/Login/Login/logOut">
 							<i class="fa fa-power-off"></i> {:C("LANG_LOG_OUT")}
 						</a>
 					</div>

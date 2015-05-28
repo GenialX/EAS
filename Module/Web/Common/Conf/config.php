@@ -30,6 +30,9 @@ $result = array(
     /** 路由配置 **/
     'URL_HTML_SUFFIX'       => $config['URL']['HTML_SUFFIX'],
     
+    /** API配置 **/
+    'API_EAS'               => $config['API']['EAS'],
+    
 );
 /** 语言包 **/
 $result = array_merge($lang, $result);

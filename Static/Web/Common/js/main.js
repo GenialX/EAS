@@ -1056,10 +1056,10 @@ var Main = function() {"use strict";
 			$('#skin_color').attr("href", _public_path + "/Common/css/themes/theme-" + $(this).attr('id') + ".css");
 			switch ($(this).attr('id')) {
 				case "style3":
-					$(".navbar-brand img").attr("src", _public_path + "/Common/images/logo_dark.png");
+					$(".navbar-brand img").attr("src", _public_path + "/Common/images/eas-logo.png");
 					break;
 				default:
-					$(".navbar-brand img").attr("src", _public_path + "/Common/images/logo.png");
+					$(".navbar-brand img").attr("src", _public_path + "/Common/images/eas-logo-white-small.png");
 					break;
 			};
 		});
@@ -1260,7 +1260,8 @@ var Main = function() {"use strict";
 			};
 			espressoSetting.skinClass = $('#skin_color').attr('href');
 
-			$.cookie("espresso-setting", JSON.stringify(espressoSetting), { path: '/Admin' });
+			$.cookie("espresso-setting", JSON.stringify(espressoSetting), { path: '/Student' });
+			$.cookie("espresso-setting", JSON.stringify(espressoSetting), { path: '/Teacher' });
 
 			var el = $('#style_selector_container');
 			el.block({

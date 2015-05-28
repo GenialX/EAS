@@ -75,6 +75,9 @@ abstract class CommonController extends Controller implements AdminModel{
 		/* Location */
 		$this->data['location'] = $this->_getLocation();
 		
+		/* dispose data */
+		$this->_disposeData($this->data);
+		
 		/* assign */
 		$this->assign("data", $this->data);
 	}
@@ -149,7 +152,7 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 
 	 */
 	private function _getLocation() {
-		$data = C("ADMIN_CONTROLLER_MAP");
+		$data = C("LANG_ADMIN_CONTROLLER_MAP");
 		$index = 0;
 		
 		/* Get location arr index */
@@ -416,5 +419,12 @@ abstract class CommonController extends Controller implements AdminModel{
 	    if($this->_isDisplay === false) return false;
 	    $this->view->display($templateFile,$charset,$contentType,$content,$prefix);
 	}
+	
+	/**
+	 * 处理模板变量.
+	 * 
+	 * @param array $data
+	 */
+	abstract protected function _disposeData(& $data);
 	
 }

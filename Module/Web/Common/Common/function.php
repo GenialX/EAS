@@ -143,9 +143,31 @@ function get_now_time() {
 }
 
 /**
+ * 拿到当前用户类型的名字.
+ * 
+ * @return string
+ */
+function get_admin_type_name() {
+    $config = get_config('Web.ini');
+    $type = session(AdminModel::ADMIN_SESSION_TYPE);
+    switch($type) {
+        case AdminModel::ADMIN_SESSION_STUDENT_TYPE:
+            return C("LANG_ADMIN_SESSION_STUDENT_TYPE_NAME") ;
+        break;
+        case AdminModel::ADMIN_SESSION_TEACHER_TYPE:
+            return C("LANG_ADMIN_SESSION_TEACHER_TYPE_NAME");
+        break;
+        default:
+            return "";
+            break;
+    }
+}
+
+/**
  * 打印函数.
  *
  */
-function p($v) {
+function p($v, $exit = false) {
     echo "<pre>" . print_r($v,true) . "</pre>";
+    if($exit) exit;
 }

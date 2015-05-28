@@ -64,4 +64,6 @@ class LoginController extends CommonController{
 		$this->display();
 	}
 	
+	protected function _disposeData(& $data) {}
+	
 }
