@@ -6,7 +6,9 @@ var Index = function() {"use strict";
 		
 		var url = _easAPI + "/notice.php";
 		var ajaxContainer = $("#ajax-content");
-		ajaxLoader(url, ajaxContainer);
+		window.setTimeout(function() {
+			ajaxLoader(url, ajaxContainer);
+		}, 3000);
 	};
 	
 	// function to load content with ajax

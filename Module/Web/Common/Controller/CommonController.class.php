@@ -17,26 +17,26 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * @author genialx
 	 *
 	 */
-	protected $map = array();
+	private $_map = array();
 	
 	/**
 	 * SQL order 查询条件.
 	 * @author genialx
 	*/
-	protected $order = "id desc";
+	private $_order = "id desc";
 	
 	/**
 	 * This variable is used to storage the datas assigned to template file.
 	 * 
 	 */
-	protected $data = array();
+	private $_data = array();
 	
 	/**
 	 * 标志是否渲染界面.
 	 * 
 	 * @var bool
 	 */
-	protected $_isDisplay = true;
+	private $_isDisplay = true;
 	
 	/**
 	 * Validation of the current user.
@@ -67,19 +67,19 @@ abstract class CommonController extends Controller implements AdminModel{
 	protected function _assign() {
 		
 		/* current user */
-		$this->data['admin'] = D('Admin')->where(array("id"=>session(self::ADMIN_SESSION_ID)))->find();
+		$this->_data['admin'] = D('Admin')->where(array("id"=>session(self::ADMIN_SESSION_ID)))->find();
 		
 		/* pageslide left */
-		$this->data['pageSlideLeft'] = $this->_getPageSlideLeft();
+		$this->_data['pageSlideLeft'] = $this->_getPageSlideLeft();
 		
 		/* Location */
-		$this->data['location'] = $this->_getLocation();
+		$this->_data['location'] = $this->_getLocation();
 		
 		/* dispose data */
-		$this->_disposeData($this->data);
+		$this->_disposeData($this->_data);
 		
 		/* assign */
-		$this->assign("data", $this->data);
+		$this->assign("data", $this->_data);
 	}
 	
 	/**
@@ -247,7 +247,7 @@ abstract class CommonController extends Controller implements AdminModel{
 		$table = (isset($table))?$table:$this->_getTable();
 		$table = D($table);
 		$data  = $table->create();
-		$data  = $this->_dispose($data);
+		$this->_disposeData($data);
 		if($data) {
 			$result = null;
 			if($isRelation) {
@@ -295,7 +295,7 @@ abstract class CommonController extends Controller implements AdminModel{
 		$table = (isset($table))?$table:$this->_getTable();
 		$table = D($table);
 		$data  = $table->create();
-		$data  = $this->_dispose($data);
+		$this->_disposeData($data);
 		if($data) {
 			if($isRelation) {
 				$result = $table->relation($isRelation)->save($data);
@@ -323,35 +323,27 @@ abstract class CommonController extends Controller implements AdminModel{
 	 *
 	 * @author genialx
 	 */
-	protected function _list($isRelation = false, $table = null) {
+	private function _list($isRelation = false, $table = null) {
 		$table 		= (isset($table))?$table:$this->_getTable();
 		$Data 		= D($table); // 实例化数据对象
-		$count      = $Data->where($this->map)->count();// 查询满足要求的总记录数 $map表示查询条件
+		$count      = $Data->where($this->_map)->count();// 查询满足要求的总记录数 $map表示查询条件
 		$Page       = new Page($count, C('MANAGE_PAGE_ITEM_COUNT'));// 实例化分页类 传入总记录数
 		$Page->setConfig('theme', "%totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first% %prePage% %linkPage% %nextPage% %end%");
 		$show       = $Page->show();// 分页显示输出
 		// 进行分页数据查询
 		if($isRelation) {
 			// 关联查询
-			$list = $Data->relation(true)->where($this->map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
+			$list = $Data->relation(true)->where($this->_map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
 		} else {
-			$list = $Data->where($this->map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
+			$list = $Data->where($this->_map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
 		}
 		
 		$data['list'] = $list;
-		$data = $this->_dispose($data);
+		$this->_disposeData($data);
 		$list = $data['list'];
 		
 		$this->assign('list',$list);// 赋值数据集
 		$this->assign('page',$show);// 赋值分页输出
-	}
-	
-	/**
-	 * Dispose something specifically.
-	 * 
-	 */
-	protected function _dispose($data) {
-		return $data;
 	}
 
 	/**
@@ -379,7 +371,7 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * @param $isRelation 是否利用关联模型
 	 * @return string [tableName] or ''
 	 */
-	protected function _getTable() {
+	private function _getTable() {
 		$controller = $this->_getController();
 		$C2M = new Controller2Model();
 		return $C2M->{$controller};
@@ -420,8 +412,16 @@ abstract class CommonController extends Controller implements AdminModel{
 	    $this->view->display($templateFile,$charset,$contentType,$content,$prefix);
 	}
 	
+	protected function _disableDisplay() {
+	    $this->_isDisplay = false;
+	}
+	
 	/**
 	 * 处理模板变量.
+	 * 
+	 * 该动作在赋值完默认的模板变量后和执行增删改动作之前执行，
+	 * 一般用作处理一些常用的语言包字符串替换工作，
+	 * 和增删该的相关数据处理工作。
 	 * 
 	 * @param array $data
 	 */

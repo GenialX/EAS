@@ -13,6 +13,8 @@ $result = array(
     'LANG'                  =>  $config['APP']['LANG'],
     
     /** DB配置 **/
+    'DB_DEPLOY_TYPE'        => $config['DB']['DEPLOY_TYPE'],
+    'DB_RW_SEPARATE'        => $config['DB']['RW_SEPARATE'],
     'DB_TYPE'               => $config['DB']['TYPE'],
     'DB_HOST'               => $config['DB']['HOST'],
     'DB_NAME'               => $config['DB']['NAME'],
