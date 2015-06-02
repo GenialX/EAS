@@ -1,6 +1,7 @@
 <?php 
 use Think\Log;
 use Common\Library\Int\Model\AdminModel;
+use Common\Library\Int\Model\AppointmentModel;
 /**
  * 获取配置信息.
  *
@@ -159,6 +160,28 @@ function get_admin_type_name() {
         break;
         default:
             return "";
+            break;
+    }
+}
+
+/**
+ * 返回预约状态.
+ * 
+ * @status int 状态整形变量
+ */
+function get_appointment_status($status) {
+    switch($status) {
+        case AppointmentModel::STATUS_AUDIT:
+                return C("LANG_AUDIT");
+            break;
+        case AppointmentModel::STATUS_NOT_AUDIT:
+                return C("LANG_NOT_AUDIT");
+            break;
+        case AppointmentModel::STATUS_TO_IMPROVE:
+                return C("LANG_TO_IMPROVE");
+            break;
+        default:
+                return '';
             break;
     }
 }

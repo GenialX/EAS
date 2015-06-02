@@ -22,7 +22,7 @@ class IndexController extends CommonController{
 	 * 
 	 * @see \Common\Controller\CommonController::_disposeData()
 	 */
-	protected function _disposeData(& $data) {
+	protected function _disposeData(& $data, $fromAction = null) {
 	    switch(ACTION_NAME) {
 	        case 'index':
 	            IndexData::index($data);

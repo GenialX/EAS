@@ -40,21 +40,11 @@
 						<!-- end: BREADCRUMB -->
 						<!-- start: PAGE CONTENT -->
 						<div class="row">
-						  <div class="col-md-12">
-                                <div class="panel panel-white">
-                                    <div class="panel-body">
-                                        <div class="jumbotron">
-                                            <h1>{:C("LANG_SI_WELCOME_TITLE")}</h1>
-                                            <p class="lead">
-                                                {:C("LANG_SI_WELCOME_CONTENT")}    
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+						  <div class="col-sm-12">
+                                <!-- start: TEXT FIELDS PANEL -->
                                 <div class="panel panel-white">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title">{:C("LANG_SI_EAS_NEWS_TITME")}</h4>
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_SA_MANAGE_ITEM_TITLE")}</span></h4>
                                         <div class="panel-tools">
                                             <div class="dropdown">
                                                 <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
@@ -76,14 +66,20 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="panel-body messages" style="padding:15px;">
-		                              <div id="ajax-content" class="animated shake">
-                                        {:C("LANG_LOADING")}
-                                      </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="form-field-1">
+                                                Text Field
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" placeholder="Text Field" id="form-field-1" class="form-control">
+                                           </div>
+                                        </div>
                                     </div>
                                 </div>
-                             </div>
-						</div>
+                                <!-- end: TEXT FIELDS PANEL -->
+                            </div>
+ 						</div>
 						<!-- end: PAGE CONTENT-->
 					</div>
 					<div class="subviews">

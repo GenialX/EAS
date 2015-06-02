@@ -76,7 +76,7 @@ abstract class CommonController extends Controller implements AdminModel{
 		$this->_data['location'] = $this->_getLocation();
 		
 		/* dispose data */
-		$this->_disposeData($this->_data);
+		$this->_disposeData($this->_data, "_assign");
 		
 		/* assign */
 		$this->assign("data", $this->_data);
@@ -247,7 +247,7 @@ abstract class CommonController extends Controller implements AdminModel{
 		$table = (isset($table))?$table:$this->_getTable();
 		$table = D($table);
 		$data  = $table->create();
-		$this->_disposeData($data);
+		$this->_disposeData($data, "insert");
 		if($data) {
 			$result = null;
 			if($isRelation) {
@@ -267,13 +267,16 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * @param isRelation 关联删除
 	 */
 	public function delete($isRelation = false, $table = null) {
-		$ids = I('get.ids',0);
-		$ids = trim($ids, ",");
-		if($ids == 0) {
-			$this->error(C("LANG_ERR"));
-			return false;
-		}
+			    
+	    $this->_before_delete();
 	
+	    $ids = I('get.ids',0);
+	    $ids = trim($ids, ",");
+	    if($ids == 0) {
+	        $this->error(C("LANG_PARAM") . C("LANG_ERR"));
+	        return false;
+	    }
+	    
 		$table 	= (isset($table))?$table:$this->_getTable();
 		$D 		= D($table);
 	
@@ -282,20 +285,35 @@ abstract class CommonController extends Controller implements AdminModel{
 		} else {
 			$result = $D->delete($ids);
 		}
-	
+
+		$this->_after_delete();
+		
 		return $result;
 	
 	}
+	
+	/**
+	 * 删除后的滞后操作.
+	 */
+	protected function _after_delete() {}
+	
+	/**
+	 * 删除前的前置操作.
+	 */
+	protected function _before_delete() {}
 	
 	/**
 	 * 更新操作.
 	 * @author genialx
 	 */
 	public function update($isRelation = false, $table = null) {
+	    
+	    $this->_before_update();
+	    
 		$table = (isset($table))?$table:$this->_getTable();
 		$table = D($table);
 		$data  = $table->create();
-		$this->_disposeData($data);
+		$this->_disposeData($data, "update");
 		if($data) {
 			if($isRelation) {
 				$result = $table->relation($isRelation)->save($data);
@@ -304,9 +322,21 @@ abstract class CommonController extends Controller implements AdminModel{
 			}
 			return $result;
 		}	
+		
+		$this->_after_update();
+		
 		return $table->getError();
 	}
 	
+	/**
+	 * 更新后的滞后操作.
+	 */
+	protected function _after_update() {}
+	
+	/**
+	 * 更新前的前置操作.
+	 */
+    protected function _before_update() {}
 	
 	/**
 	 * 管理界面.
@@ -333,13 +363,13 @@ abstract class CommonController extends Controller implements AdminModel{
 		// 进行分页数据查询
 		if($isRelation) {
 			// 关联查询
-			$list = $Data->relation(true)->where($this->_map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
+			$list = $Data->relation(true)->where($this->_map)->order($this->_order)->limit($Page->firstRow.','.$Page->listRows)->select();
 		} else {
-			$list = $Data->where($this->_map)->order($this->order)->limit($Page->firstRow.','.$Page->listRows)->select();
+			$list = $Data->where($this->_map)->order($this->_order)->limit($Page->firstRow.','.$Page->listRows)->select();
 		}
 		
 		$data['list'] = $list;
-		$this->_disposeData($data);
+		$this->_disposeData($data, "_list");
 		$list = $data['list'];
 		
 		$this->assign('list',$list);// 赋值数据集
@@ -423,8 +453,37 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 一般用作处理一些常用的语言包字符串替换工作，
 	 * 和增删该的相关数据处理工作。
 	 * 
-	 * @param array $data
+	 * @param array $data 数据数组
+	 * @param string $fromAction 调用于的控制器名称
 	 */
-	abstract protected function _disposeData(& $data);
+	abstract protected function _disposeData(& $data, $fromAction = null);
+	
+	/**
+	 * 设置map变量.
+	 */
+	protected function _setMap($map) {
+	    $this->_map = $map;
+	}
+	
+	/**
+	 * 返回map变量.
+	 */
+	protected function _getMap() {
+	    return $this->_map;
+	}
+	
+	/**
+	 * 设置order变量.
+	 */
+	protected function _setOrder($order) {
+	    $this->_order = $order;
+	} 
+	
+	/**
+	 * 返回order变量.
+	 */
+	protected function _getOrder() {
+	    return $this->_order;
+	}
 	
 }
