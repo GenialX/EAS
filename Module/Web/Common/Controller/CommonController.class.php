@@ -87,7 +87,17 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 
 	 */
 	private function _getPageSlideLeft() {
-		$data = C("LANG_ADMIN_CONTROLLER_MAP");
+	    switch(MODULE_NAME) {
+	        case 'Student':
+	            $data = C("LANG_STUDENT_CONTROLLER_MAP");
+	            break;
+	        case 'Teacher':
+	            $data = C("LANG_TEACHER_CONTROLLER_MAP");
+	            break;
+	        default :
+	            $data = C("LANG_STUDENT_CONTROLLER_MAP");
+	            break;
+	    }
 		$result = '';
 		foreach($data as $k=>$v) {
 			if(!count($v['sub_map'])){ // 无子菜单
@@ -152,7 +162,17 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 
 	 */
 	private function _getLocation() {
-		$data = C("LANG_ADMIN_CONTROLLER_MAP");
+	    switch(MODULE_NAME) {
+        case 'Student':
+            $data = C("LANG_STUDENT_CONTROLLER_MAP");
+            break;
+        case 'Teacher':
+            $data = C("LANG_TEACHER_CONTROLLER_MAP");
+            break;
+        default :
+            $data = C("LANG_STUDENT_CONTROLLER_MAP");
+            break;
+	    }
 		$index = 0;
 		
 		/* Get location arr index */
@@ -484,6 +504,13 @@ abstract class CommonController extends Controller implements AdminModel{
 	 */
 	protected function _getOrder() {
 	    return $this->_order;
+	}
+	
+	/**
+	 * 重新赋值.
+	 */
+	protected function _assignData() {
+	    $this->assign('data', $this->_data);
 	}
 	
 }

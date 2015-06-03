@@ -35,6 +35,11 @@ return array (
         'LANG_ERR'          => '错误',
         'LANG_FAIL'         => '失败',
         'LANG_SUC'          => '成功',
+        'LANG_UPLOAD'       => '上传',
+        'LANG_ADD'          => '添加',
+        'LANG_FILE'         => '文件',
+        'LANG_START'        => '开始',
+        'LANG_CANCLE'       => '取消',
         
         /* APP INFO */
         'LANG_APP_VERSION'  => '版本 1.0.0_dev',
@@ -42,7 +47,7 @@ return array (
         'LANG_APP_NAME'     => 'EAS',
     
         /* Action name of controller */
-        'LANG_ADMIN_CONTROLLER_MAP' => array(
+        'LANG_STUDENT_CONTROLLER_MAP' => array(
             1 => array(
                     'name' => '起始页',
                     'controller' => 'Index',
@@ -85,6 +90,46 @@ return array (
                                         'icon_class' => 'fa fa-user',
                                         'sub_map' => array(),
                                 ),
+                ),
+            ),
+        ),
+
+        'LANG_TEACHER_CONTROLLER_MAP' => array(
+            1 => array(
+                'name' => '起始页',
+                'controller' => 'Index',
+                'action' => 'index',
+                'icon_class' => 'fa fa-home',
+                'sub_map' => array(),
+            ),
+            2 => array(
+                'name' => '实验预约',
+                'controller' => 'Appointment',
+                'action' => 'manage',
+                'icon_class' => 'fa fa-archive',
+                'sub_map' => array(
+                    1 => array(
+                        'name'          => '预约管理',
+                        'controller'    => 'Appointment',
+                        'action'        => 'manage',
+                        'icon_class'    => 'fa fa-list',
+                        'sub_map'       => array(),
+                    ),
+                ),
+            ),
+            3 => array(
+                'name' => '设置',
+                'action' => 'index',
+                'controller' => 'Setting',
+                'icon_class' => 'fa fa-cogs',
+                'sub_map' => array(
+                    1 => array(
+                        'name' => '个人资料',
+                        'controller' => 'Profile',
+                        'action' => 'index',
+                        'icon_class' => 'fa fa-user',
+                        'sub_map' => array(),
+                    ),
                 ),
             ),
         ),
@@ -146,5 +191,5 @@ return array (
         'LANG_SA_MANAGE_ITEM_TITLE'   => '实验标题',
         'LANG_SA_MANAGE_ITEM_TIME'    => '预约时间',
         'LANG_SA_MANAGE_ITEM_STATUS'  => '审核状态',  
-        
+        'LANG_SA_SCHEME_FILE'         => '方案文件',
 );

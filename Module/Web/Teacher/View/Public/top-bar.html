@@ -1,0 +1,56 @@
+			<header class="topbar navbar navbar-inverse navbar-fixed-top inner">
+				<!-- start: TOPBAR CONTAINER -->
+				<div class="container">
+					<div class="navbar-header">
+						<a class="sb-toggle-left hidden-md hidden-lg" href="#main-navbar">
+							<i class="fa fa-bars"></i>
+						</a>
+						<!-- start: LOGO -->
+						<a class="navbar-brand" href="__MODULE__/Index/index">
+							<img src="__STATIC__/Common/images/eas-logo-white-small.png" alt="EAS"/>
+						</a>
+						<!-- end: LOGO -->
+					</div>
+					<div class="topbar-tools">
+						<!-- start: TOP NAVIGATION MENU -->
+						<ul class="nav navbar-right">
+							<!-- start: USER DROPDOWN -->
+							<li class="dropdown current-user">
+								<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+									<img src="__STATIC__/Common/images/avatar-1-small.jpg" class="img-circle" alt=""> <span class="username hidden-xs">{$data['admin']['nickname']}</span> <i class="fa fa-caret-down "></i>
+								</a>
+								<ul class="dropdown-menu dropdown-dark">
+									<li>
+										<a href="__MODULE__/Profile/index">
+											{:C("LANG_MY_PROFILE")}
+										</a>
+									</li>
+									<li style="display:none;">
+										<a href="javascript:void(0);">
+											{:C("LANG_MY_MESSAGES")}
+										</a>
+									</li>
+									<li>
+										<a href="/Login/Login/lock">
+											{:C("LANG_LOCK_SCREEN")}
+										</a>
+									</li>
+									<li>
+										<a href="/Login/Login/logOut">
+											{:C("LANG_LOG_OUT")}
+										</a>
+									</li>
+								</ul>
+							</li>
+							<!-- end: USER DROPDOWN -->
+							<li style="display:none;" class="right-menu-toggle">
+								<a href="#" class="sb-toggle-right">
+									<i class="fa fa-globe toggle-icon"></i> <i class="fa fa-caret-right"></i> <span style="display:none;" class="notifications-count badge badge-default hide"> </span>
+								</a>
+							</li>
+						</ul>
+						<!-- end: TOP NAVIGATION MENU -->
+					</div>
+				</div>
+				<!-- end: TOPBAR CONTAINER -->
+			</header>

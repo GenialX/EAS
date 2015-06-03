@@ -2,6 +2,7 @@
 namespace Student\Controller;
 use Common\Controller\CommonController;
 use Common\Library\Data\Student\AppointmentData;
+use Common\Library\Util\UploadHandler;
 /**
  * 学生预约控制器.
  */
@@ -34,12 +35,21 @@ class AppointmentController extends CommonController {
         $this->display();
     }
     
+    public function upload() {
+        new UploadHandler();
+    }
+    
     protected function _disposeData(& $data, $fromAction = null) {
         switch(ACTION_NAME) {
             case 'manage':
                 if(isset($fromAction) and $fromAction === '_list') {
                     AppointmentData::manage($data);
                 }
+                break;
+            case 'add' :
+                if(isset($fromAction)) {
+                    AppointmentData::add($data);
+                } 
                 break;
             default:
                 AppointmentData::doDefault();

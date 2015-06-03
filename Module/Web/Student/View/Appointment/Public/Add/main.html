@@ -39,11 +39,48 @@
 						<include file="Public/container-breadcrumb" />
 						<!-- end: BREADCRUMB -->
 						<!-- start: PAGE CONTENT -->
-						<div class="row">
-						  <div class="col-sm-12">
-                                <!-- start: TEXT FIELDS PANEL -->
+                        <div class="row">
+                          <div class="col-sm-12">
+                                <!-- start: ACTION PANEL -->
                                 <div class="panel panel-white">
-                                    <div class="panel-heading">
+                                    <div class="panel-heading"> 
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_ACTION")}</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-11">
+	                                            <button data-style="zoom-in" class="ladda-button save-button text-bold" data-size="s" data-color="green">
+	                                               {:C("LANG_SAVE")}
+	                                            </button>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: ACTION PANEL -->
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                                <!-- start: TITLE FIELD PANEL -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading"> 
                                         <h4 class="panel-title"><span class="text-bold">{:C("LANG_SA_MANAGE_ITEM_TITLE")}</span></h4>
                                         <div class="panel-tools">
                                             <div class="dropdown">
@@ -61,25 +98,208 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <a class="btn btn-xs btn-link panel-close" href="#">
-                                                <i class="fa fa-times"></i>
-                                            </a>
                                         </div>
                                     </div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="form-field-1">
-                                                Text Field
-                                            </label>
-                                            <div class="col-sm-9">
-                                                <input type="text" placeholder="Text Field" id="form-field-1" class="form-control">
+                                            <div class="col-sm-11">
+                                                <input type="text" placeholder="" id="name-input" name="name" class="form-control">
+                                                <br />
                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end: TEXT FIELDS PANEL -->
+                                <!-- end: TITLE FIELD PANEL -->
                             </div>
- 						</div>
+                        </div>
+ 						<div class="row">
+                            <div class="col-sm-12">
+                                <!-- start: TEACHER SELECT UPLOAD -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_TEACHER")}</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                       <div class="form-group">
+                                            <select id="teacher-select" class="form-control search-select">
+                                                <option value="">&nbsp;</option>
+                                                <volist name="data.teacher" id="vo">
+                                                    <option value="{$vo.id}">{$vo.nickname}</option>
+                                                </volist>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: TEACHER SELECT UPLOAD -->
+                          </div>
+                        </div>
+ 						<div class="row">
+                          <div class="col-sm-12">
+                                <!-- start: DATE FIELD PANEL -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_SA_MANAGE_ITEM_TIME")}</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+										<div class="container">
+									        <fieldset>
+									            <div class="form-group">
+									                <div class="input-group date form_datetime col-md-5" data-date-format="yyyy-mm-dd hh:ii:00" data-link-field="dtp_input1">
+									                    <input class="form-control" size="16" type="text" value="" readonly>
+									                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+									                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+									                </div>
+									                <input type="hidden" id="dtp_input1" value="" /><br/>
+									            </div>
+									        </fieldset>
+										</div>
+                                    </div>
+                                </div>
+                                <!-- end: DATE FIELD PANEL -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- start: MULTIPLE FILE UPLOAD -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_SA_SCHEME_FILE")}</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <form id="fileupload" action="#" method="POST" enctype="multipart/form-data">
+                                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                            <div class="row fileupload-buttonbar">
+                                                <div class="col-lg-7">
+                                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                                    <span class="btn btn-success fileinput-button"> <i class="glyphicon glyphicon-plus"></i><span class="text-bold">{:C("LANG_ADD")}{:C("LANG_FILE")}...</span>
+                                                        <input type="file" name="files[]" multiple>
+                                                        <input type="hidden" name="MAX_FILE_SIZE" value="{:C("UPLOAD_MAX_FILE_SIZE")}" />
+                                                    </span>
+                                                    <button type="submit" class="btn btn-primary start">
+                                                        <i class="glyphicon glyphicon-upload"></i>
+                                                        <span>{:C("LANG_START")}{:C("LANG_UPLOAD")}</span>
+                                                    </button>
+                                                    <button type="reset" class="btn btn-warning cancel">
+                                                        <i class="glyphicon glyphicon-ban-circle"></i>
+                                                        <span>{:C("LANG_CANCLE")}{:C("LANG_UPLOAD")}</span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger delete">
+                                                        <i class="glyphicon glyphicon-trash"></i>
+                                                        <span>{:C("LANG_DELETE")}</span>
+                                                    </button>
+                                                    <!-- The loading indicator is shown during file processing -->
+                                                    <span class="fileupload-loading"></span>
+                                                </div>
+                                                <!-- The global progress information -->
+                                                <div class="col-lg-5 fileupload-progress fade">
+                                                    <!-- The global progress bar -->
+                                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                                                    </div>
+                                                    <!-- The extended global progress information -->
+                                                    <div class="progress-extended">
+                                                        &nbsp;
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- The table listing the files available for upload/download -->
+                                            <table role="presentation" class="table table-striped">
+                                                <tbody class="files"></tbody>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end: MULTIPLE FILE UPLOAD -->
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                                <!-- start: ACTION PANEL -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading"> 
+                                        <h4 class="panel-title"><span class="text-bold">{:C("LANG_ACTION")}</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-11">
+                                                <button data-style="zoom-in" class="ladda-button save-button text-bold" data-size="s" data-color="green">
+                                                    {:C("LANG_SAVE")}
+                                                </button>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: ACTION PANEL -->
+                            </div>
+                        </div>
 						<!-- end: PAGE CONTENT-->
 					</div>
 					<div class="subviews">
@@ -88,3 +308,4 @@
 				</div>
 				<!-- end: PAGE -->
 			</div>
+			

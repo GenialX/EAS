@@ -35,6 +35,12 @@ $result = array(
     /** API配置 **/
     'API_EAS'               => $config['API']['EAS'],
     
+    /** 上传配置 **/
+    'UPLOAD_URL'            => $config['UPLOAD']['URL'],
+    'UPLOAD_DIR'            => $config['UPLOAD']['DIR'],
+    'UPLOAD_MAX_FILE_SIZE'  => $config['UPLOAD']['MAX_FILE_SIZE'],
+    'UPLOAD_SCRIPT_URL'     => $config['UPLOAD']['SCRIPT_URL'],
+    
 );
 /** 语言包 **/
 $result = array_merge($lang, $result);
