@@ -28,6 +28,7 @@ return array (
         'LANG_EXPAND'       => '展开',
         'LANG_LOADING'      => '加载中...',
         'LANG_TEACHER'      => '教师',
+        'LANG_STUDENT'      => '同学',
         'LANG_ACTION'       => '操作',
         'LANG_REMOVE'       => '删除',
         'LANG_BATCH'        => '批量',
@@ -40,6 +41,7 @@ return array (
         'LANG_FILE'         => '文件',
         'LANG_START'        => '开始',
         'LANG_CANCLE'       => '取消',
+        'LANG_REDIRCTING'   => '跳转中...',
         
         /* APP INFO */
         'LANG_APP_VERSION'  => '版本 1.0.0_dev',
@@ -113,6 +115,20 @@ return array (
                         'controller'    => 'Appointment',
                         'action'        => 'manage',
                         'icon_class'    => 'fa fa-list',
+                        'sub_map'       => array(),
+                    ),
+                    2 => array(
+                        'name'          => '器材管理',
+                        'controller'    => 'Equipment',
+                        'action'        => 'manage',
+                        'icon_class'    => 'fa fa-wrench',
+                        'sub_map'       => array(),
+                    ),
+                    3 => array(
+                        'name'          => '新增器材',
+                        'controller'    => 'Equipment',
+                        'action'        => 'add',
+                        'icon_class'    => 'fa fa-plus-circle',
                         'sub_map'       => array(),
                     ),
                 ),
@@ -192,4 +208,14 @@ return array (
         'LANG_SA_MANAGE_ITEM_TIME'    => '预约时间',
         'LANG_SA_MANAGE_ITEM_STATUS'  => '审核状态',  
         'LANG_SA_SCHEME_FILE'         => '方案文件',
+    
+        /* Teacher Equipment */
+        'LANG_TE_MANAGE_TITLE'          => '器材管理',
+        'LANG_TE_MANAGE_ITEM_NAME'      => '器材名称',
+        'LANG_TE_MANAGE_ITEM_SUM_COUNT' => '总数量',
+        'LANG_TE_MANAGE_ITEM_LEFT_COUNT'=> '剩余数量',
+        'LANG_TE_MANAGE_ITEM_STATUS'    => '器材状态',
+        'LANG_TE_ADD_TITLE'             => '新增器材',
+    
+    
 );

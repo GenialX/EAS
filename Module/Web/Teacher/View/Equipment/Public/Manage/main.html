@@ -44,7 +44,7 @@
                                 <!-- start: TABLE WITH IMAGES PANEL -->
                                 <div class="panel panel-white">
                                     <div style="padding-bottom:0px;" class="panel-heading">
-                                        <h4 class="space20 panel-title"><span class="text-bold">{:C("LANG_SA_MANAGE_TITLE")}</span></h4>
+                                        <h4 class="space20 panel-title"><span class="text-bold">{:C("LANG_TE_MANAGE_TITLE")}</span></h4>
                                         <p class="space20">
                                             <button id="batch-delete-btn" type="button" class="btn btn-sm btn-danger">
                                                 {:C("LANG_BATCH")}{:C("LANG_DELETE")}
@@ -76,10 +76,10 @@
                                                             <input type="checkbox" class="flat-grey selectall">
                                                         </label>
                                                     </div></th>
-                                                    <th>{:C("LANG_SA_MANAGE_ITEM_TITLE")}</th>
-                                                    <th class="hidden-xs">{:C("LANG_STUDENT")}</th>
-                                                    <th class="hidden-xs">{:C("LANG_SA_MANAGE_ITEM_TIME")}</th>
-                                                    <th class="hidden-xs">{:C("LANG_SA_MANAGE_ITEM_STATUS")}</th>
+                                                    <th>{:C("LANG_TE_MANAGE_ITEM_NAME")}</th>
+                                                    <th class="hidden-xs">{:C("LANG_TE_MANAGE_ITEM_SUM_COUNT")}</th>
+                                                    <th class="hidden-xs">{:C("LANG_TE_MANAGE_ITEM_LEFT_COUNT")}</th>
+                                                    <th class="hidden-xs">{:C("LANG_TE_MANAGE_ITEM_STATUS")}</th>
                                                     <th class="center">{:C("LANG_ACTION")}</th>
                                                 </tr>
                                             </thead>
@@ -94,14 +94,14 @@
 	                                                            </label>
 	                                                        </div>
 	                                                    </td>
-	                                                    <td>{$vo.title}</td>
-	                                                    <td class="hidden-xs">{$vo.student.nickname}</td>
-	                                                    <td class="hidden-xs">{$vo.a_time}</td>
+	                                                    <td>{$vo.name}</td>
+	                                                    <td class="hidden-xs">{$vo.sum_count}</td>
+	                                                    <td class="hidden-xs">{$vo.left_count}</td>
 	                                                    <td class="hidden-xs">{$vo.status}</td>
 	                                                    <td class="center">
 	                                                        <div class="visible-md visible-lg hidden-sm hidden-xs">
-	                                                            <a href="__MODULE__/Appointment/edit/id/{$vo.id}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="{:C("LANG_EDIT")}"><i class="fa fa-edit"></i></a>
-	                                                            <a href="__MODULE__/Appointment/delete/ids/{$vo.id}" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="{:C("LANG_REMOVE")}"><i class="fa fa-times fa fa-white"></i></a>
+	                                                            <a href="__MODULE__/Equipment/edit/id/{$vo.id}" class="btn btn-xs btn-blue tooltips" data-placement="top" data-original-title="{:C("LANG_EDIT")}"><i class="fa fa-edit"></i></a>
+	                                                            <a href="__MODULE__/Equipment/delete/ids/{$vo.id}" class="btn btn-xs btn-red tooltips" data-placement="top" data-original-title="{:C("LANG_REMOVE")}"><i class="fa fa-times fa fa-white"></i></a>
 	                                                        </div>
 	                                                        <div class="visible-xs visible-sm hidden-md hidden-lg">
 	                                                            <div class="btn-group">
@@ -110,12 +110,12 @@
 	                                                                </a>
 	                                                                <ul role="menu" class="dropdown-menu pull-right dropdown-dark">
 	                                                                    <li>
-	                                                                        <a role="menuitem" tabindex="-1" href="__MODULE__/Appointment/edit/id/{$vo.id}/">
+	                                                                        <a role="menuitem" tabindex="-1" href="__MODULE__/Equipment/edit/id/{$vo.id}/">
 	                                                                            <i class="fa fa-edit"></i> {:C("LANG_EDIT")}
 	                                                                        </a>
 	                                                                    </li>
 	                                                                    <li>
-	                                                                        <a role="menuitem" tabindex="-1" href="__MODULE__/Appointment/delete/ids/{$vo.id}/">
+	                                                                        <a role="menuitem" tabindex="-1" href="__MODULE__/Equipment/delete/ids/{$vo.id}/">
 	                                                                            <i class="fa fa-times"></i> {:C("LANG_REMOVE")}
 	                                                                        </a>
 	                                                                    </li>

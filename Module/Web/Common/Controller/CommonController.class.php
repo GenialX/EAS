@@ -53,7 +53,12 @@ abstract class CommonController extends Controller implements AdminModel{
 				if(ACTION_NAME == 'lock') return true;
 				
 				if(CONTROLLER_NAME == 'Login') {
-					$this->_goAdmin();
+					$this->_goAdmin(C("LANG_REDIRCTING"));
+					$this->_isDisplay = false;
+				}
+				
+				if(MODULE_NAME != get_admin_module_name()) {
+				    $this->_goAdmin(C("LANG_REDIRCTING"));
 					$this->_isDisplay = false;
 				}
 		}
@@ -431,14 +436,15 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * 跳转到管理主界面.
 	 * 
 	 */
-	protected function _goAdmin() {
+	protected function _goAdmin($message = null) {
+	    if(!isset($message)) $message = C("LANG_LOGIN_SUCCESSFULLY");
 	    $type = session(AdminModel::ADMIN_SESSION_TYPE);
 	    switch($type) {
 	        case AdminModel::ADMIN_SESSION_STUDENT_TYPE:
-	            $this->success(C("LANG_LOGIN_SUCCESSFULLY"),  "/Student/Index/index");
+	            $this->success($message,  "/Student/Index/index");
 	            break;
 	        case AdminModel::ADMIN_SESSION_TEACHER_TYPE:
-	            $this->success(C("LANG_LOGIN_SUCCESSFULLY"),  "/Teacher/Index/index");
+	            $this->success($message,  "/Teacher/Index/index");
 	            break;
 	        default:
 	            $this->redirect( __MODULE__ .  "/Login/index");

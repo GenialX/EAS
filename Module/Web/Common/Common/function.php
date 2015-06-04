@@ -165,6 +165,26 @@ function get_admin_type_name() {
 }
 
 /**
+ * 返回当前用户类型的module名称.
+ * 
+ * @return string
+ */
+function get_admin_module_name() {
+    $type = session(AdminModel::ADMIN_SESSION_TYPE);
+    switch($type) {
+        case AdminModel::ADMIN_SESSION_STUDENT_TYPE:
+            return 'Student';
+            break;
+        case AdminModel::ADMIN_SESSION_TEACHER_TYPE:
+            return 'Teacher';
+            break;
+        default:
+            return "";
+            break;
+    }
+}
+
+/**
  * 返回预约状态.
  * 
  * @status int 状态整形变量

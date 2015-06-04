@@ -1,39 +1,5 @@
-var _teacher_id = 0; // 教师的ID
 var _isSaving = false; // 标志是否正在保存中
-var _a_time = ''; // 预约时间
 var Add = function() {
-	
-	/**
-	 * 时间选择器插件.
-	 */
-	var runDateTimePicker = function() {
-		/** 选择预约时间 **/
-	    $('.form_datetime').datetimepicker({
-	        language:  'zh-CN',
-	        todayBtn:  1,
-	        autoclose: 1,
-	        todayHighlight: 1,
-	        startView: 2,
-	        forceParse: 1,
-	        initialDate: new Date(),
-	    });
-	};
-	
-	/**
-	 * 下拉选择框.
-	 */
-	var runSelect2 = function() {
-		/** 选择教师 **/
-		$(".search-select").select2({
-			placeholder: "",
-			allowClear: false
-		});
-		
-		$("#teacher-select").on("change", function(e) { 
-			_teacher_id = e.val;
-		});
-	    
-	};
 	
 	/**
 	 * 按钮事件.
@@ -63,14 +29,21 @@ var Add = function() {
         	l.stop();
         	_isSaving = false;
         });
+        
 	};
+	
+	var runInput = function() {
+		$("input[name='sum-count-input']").TouchSpin({
+			postfix_extraclass: "btn btn-default",
+			max:4294967295,
+		});
+	};
+
 	
 	return {
 		init : function() {
-			runDateTimePicker();
-			runSelect2();
 			runButton();
+			runInput();
 		},
 	};
-	
 }();
