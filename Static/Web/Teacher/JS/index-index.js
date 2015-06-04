@@ -8,7 +8,7 @@ var Index = function() {"use strict";
 		var ajaxContainer = $("#ajax-content");
 		window.setTimeout(function() {
 			ajaxLoader(url, ajaxContainer);
-		}, 3000);
+		}, 500);
 	};
 	
 	// function to load content with ajax
