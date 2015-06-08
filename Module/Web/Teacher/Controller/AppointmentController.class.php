@@ -1,7 +1,7 @@
 <?php
 namespace Teacher\Controller;
 use Common\Controller\CommonController;
-use Common\Library\Data\Student\AppointmentData;
+use Common\Library\Data\Teacher\AppointmentData;
 use Common\Library\Util\UploadHandler;
 /**
  * 学生预约控制器.

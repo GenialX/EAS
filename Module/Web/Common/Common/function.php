@@ -2,6 +2,7 @@
 use Think\Log;
 use Common\Library\Int\Model\AdminModel;
 use Common\Library\Int\Model\AppointmentModel;
+use Common\Library\Int\Model\EquipmentModel;
 /**
  * 获取配置信息.
  *
@@ -204,6 +205,20 @@ function get_appointment_status($status) {
                 return '';
             break;
     }
+}
+
+function get_equipment_status($status) {
+    switch($status) {
+        case EquipmentModel::STATUS_AVAILABLE:
+            return C("LANG_AVAILABLE");
+            break;
+        case EquipmentModel::STATUS_NOT_AVAILABLE:
+            return C("LANG_NOT_AVAILABLE");
+            break;
+        default:
+            return '';
+            break;
+    } 
 }
 
 /**

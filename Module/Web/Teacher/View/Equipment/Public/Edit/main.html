@@ -1,4 +1,4 @@
-a           <div class="main-container inner">
+           <div class="main-container inner">
                 <!-- start: PAGE -->
                 <div class="main-content">
                     <div class="container">
@@ -79,7 +79,7 @@ a           <div class="main-container inner">
                                                     {:C("LANG_TE_ADD_ITEM_NAME")}
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" id="name-input" name="name" class="form-control">
+                                                    <input type="text" id="name-input" name="name" value="{$data['item']['name']}" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -87,7 +87,8 @@ a           <div class="main-container inner">
                                                     {:C("LANG_TE_ADD_ITEM_SUM_COUNT")}
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <input id="sum-count-input" type="text" value="0" name="sum-count">
+                                                    <input id="sum-count-input" type="text" value="{$data['item']['sum_count']}" name="sum-count">
+                                                    <input type="hidden" id="id-input" value="{$data['item']['id']}" >
                                                 </div>
                                             </div>
                                          </form>

@@ -165,6 +165,118 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-12">
+                                <!-- start: EQUIPMENT SELECT TABLE PANEL -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="text-bold">可选择的器材</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                                            <thead>
+                                                <tr>
+                                                    <th>{:C("LANG_TE_MANAGE_ITEM_NAME")}</th>
+                                                    <th class="hidden-xs">{:C("LANG_TE_MANAGE_ITEM_LEFT_COUNT")}</th>
+                                                    <th>{:C("LANG_ACTION")}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <volist name="data['equipment']" id="v">
+                                                <tr>
+	                                                <td id="name-{$v.id}">{$v.name}</td>
+	                                                <td id="left-count-{$v.id}" class="hidden-xs">{$v.left_count}</td>
+	                                                <td class="center">
+	                                                <button id-value="{$v.id}" data-bb="prompt" class="btn btn-blue">
+                                                        {:C("LANG_ADD")}
+                                                    </button>
+                                                    </td>
+                                                </tr>
+                                                </volist>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- end: EQUIPMENT SELECT TABLE PANEL -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- start: EQUIPMENT SELECTED TABLE PANEL -->
+                                <div class="panel panel-white">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><span class="text-bold">已选择的器材</span></h4>
+                                        <div class="panel-tools">
+                                            <div class="dropdown">
+                                                <a data-toggle="dropdown" class="btn btn-xs dropdown-toggle btn-transparent-grey">
+                                                    <i class="fa fa-cog"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-light pull-right" role="menu">
+                                                    <li>
+                                                        <a class="panel-collapse collapses" href="#"><i class="fa fa-angle-up"></i> <span>{:C("LANG_COLLAPSE")}</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="panel-expand" href="#">
+                                                            <i class="fa fa-expand"></i> <span>{:C("LANG_FULLSCREEN")}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a class="btn btn-xs btn-link panel-close" href="#">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">  
+                                        <button class="add-row hidden">{:C("LANG_ADD")}</button>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover" id="sample_2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>{:C("LANG_TE_MANAGE_ITEM_NAME")}</th>
+                                                        <th>剩余数量</th>
+                                                        <th>{:C("LANG_EDIT")}</th>
+                                                        <th>{:C("LANG_DELETE")}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody> 
+                                                    <tr> 
+                                                        <td>Peter Clark</td>
+                                                        <td>UI Designer</td>
+                                                        <td>
+                                                        <a href="#" class="edit-row">
+                                                            Edit
+                                                        </a></td>
+                                                        <td>
+                                                        <a href="#" class="delete-row">
+                                                            Delete
+                                                        </a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end: EQUIPMENT SELECTED TABLE PANEL -->
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-sm-12">
                                 <!-- start: MULTIPLE FILE UPLOAD -->
                                 <div class="panel panel-white">

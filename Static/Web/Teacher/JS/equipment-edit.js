@@ -1,7 +1,8 @@
 var _isSaving 		= false; // 标志是否正在保存中
 var _isAjax 		= true; // 标志通过ajax访问
 var _buttonMsg		= null; //语言包对象
-var Add = function() {
+var _id				= null // 主键
+var Edit = function() {
 	
 	/**
 	 * 按钮事件.
@@ -16,17 +17,13 @@ var Add = function() {
         	l.start();
         	var name 			= $("#name-input").val();
         	var sumCount 		= $("#sum-count-input").val();
-        	var leftCount 		= sumCount;
-        	var inUsingCount 	= 0;
-        	var status 			= 1;
+        	_id					= $("#id-input").val();
         	setTimeout(function() {
-            	$.post("/Teacher/Equipment/insert/", {
+        		$.post("/Teacher/Equipment/update/", {
             		isAjax : _isAjax,
             		name : name,
             		sum_count : sumCount,
-            		left_count : leftCount,
-            		in_using_count : inUsingCount,
-            		status : status,
+            		id : _id,
             	}, function(result) {
             		result = $.parseJSON(result);
             		switch(result.errCode) {
@@ -43,7 +40,7 @@ var Add = function() {
             	}); 
             	l.stop();
             	_isSaving = false;
-        	}, 500);
+			}, 500);
         });
         
 	};

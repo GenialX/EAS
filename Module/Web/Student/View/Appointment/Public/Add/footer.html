@@ -122,7 +122,17 @@
 <script src="__STATIC__/Common/plugins/ladda-bootstrap/dist/spin.min.js"></script>
 <script src="__STATIC__/Common/plugins/ladda-bootstrap/dist/ladda.min.js"></script>
 <!-- end: button -->
+<!-- start: table -->
+<script src="__STATIC__/Common/plugins/DataTables/media/js/jquery.dataTables.min.{:C("LANG")}.js"></script>
+<script src="__STATIC__/Common/plugins/DataTables/media/js/DT_bootstrap.{:C("LANG")}.js"></script>
+<!-- end: table -->
+<!-- start: modal[table] -->
+<script src="__STATIC__/Common/plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
+<script src="__STATIC__/Common/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
+<!-- end: modal[table] -->
 <script type="text/javascript" src="__STATIC__/Student/JS/appointment-add.js" charset="UTF-8"></script>
 <script type="text/javascript">
-    Add.init();
+    appAddLang = '{:C("LANG_SA_ADD_LANG")}';
+    appAddLang = $.parseJSON(appAddLang);
+    Add.init(appAddLang);
 </script>

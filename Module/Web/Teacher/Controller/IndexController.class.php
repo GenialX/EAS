@@ -1,7 +1,7 @@
 <?php
 namespace Teacher\Controller;
 use Common\Controller\CommonController;
-use Common\Library\Data\Student\IndexData;
+use Common\Library\Data\Teacher\IndexData;
 /**
  * Student Index controller.
  */

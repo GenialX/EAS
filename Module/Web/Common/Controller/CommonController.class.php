@@ -105,9 +105,14 @@ abstract class CommonController extends Controller implements AdminModel{
 	    }
 		$result = '';
 		foreach($data as $k=>$v) {
-			if(!count($v['sub_map'])){ // 无子菜单
+		    if(isset($v['visible']) && $v['visible'] == false) continue;
+			if(!count($v['sub_map']) || $this->_isVisible($v['sub_map']) == false){ // 无子菜单 || 没有可见子数组
 				$class = "";
 				if(CONTROLLER_NAME == $v['controller'] && ACTION_NAME == $v['action']) $class = "class = \"active open\"";
+				if($class == "" && count($v['sub_map']) > 0) {
+				    $isHave = $this->_isHaveSubMap($v['sub_map']);
+				    if($isHave) $class = "class = \"active open\""; else $class = "";
+				}
 				$_result = "<li {$class} ><a href=\"".__MODULE__."/{$v['controller']}/{$v['action']}\"><i class=\"{$v['icon_class']}\"></i> <span class=\"title\">{$v['name']} </span></a></li>";
 			} else { //　有子菜单
 				$isHave = $this->_isHaveSubMap($v['sub_map']);
@@ -128,8 +133,13 @@ abstract class CommonController extends Controller implements AdminModel{
 		$result = "<ul class=\"sub-menu\">";
 		foreach($data as $k => $v) {
 			$class = "";
-			if(!count($v['sub_map'])) { // 无子菜单
+		    if(isset($v['visible']) && $v['visible'] == false) continue;
+			if(!count($v['sub_map']) || $this->_isVisible($v['sub_map']) == false) { // 无子菜单 || 没有可见的子数组
 				if(CONTROLLER_NAME == $v['controller'] && ACTION_NAME == $v['action']) $class = "class = \"active open\"";
+				if($class == "" && count($v['sub_map']) > 0) {
+				    $isHave = $this->_isHaveSubMap($v['sub_map']);
+				    if($isHave) $class = "class = \"active open\""; else $class = "";
+				}
 				$result .= "<li {$class} ><a href=\"".__MODULE__."/{$v['controller']}/{$v['action']}\"><i class=\"{$v['icon_class']}\"></i> <span class=\"title\">{$v['name']} </span></a></li>";
 			} else { // 有子菜单
 				$isHave = $this->_isHaveSubMap($v['sub_map']);
@@ -154,13 +164,32 @@ abstract class CommonController extends Controller implements AdminModel{
 		foreach ($data as $k => $v) {
 			if($v['controller'] == CONTROLLER_NAME && $v['action'] == ACTION_NAME) {
 				return true;
-			} else if(count($v['sub_map'])) {
-				return $this->_isHaveSubMap($v['sub_map']);
-			}
+			} else if(count($v['sub_map']) > 0) {
+				$rs = $this->_isHaveSubMap($v['sub_map']);
+				if($rs == true) return true;
+			} 
 		}
 		return false;
 	}
 	
+	/**
+	 * 判断是否有可视的子数组.
+	 * @param array $data
+	 */
+	private function _isVisible($data) {
+	    $isVisible = false;
+	    foreach ($data as $k => $v) {
+	        if(count($v['sub_map']) > 0) {
+	            $isVisible = $this->_isVisible($v['sub_map']);
+	        } else {
+	            if( ! (isset($v['visible']) && $v['visible'] == false) ) {
+	                return true;
+	            }
+	        }
+	        if($isVisible == true) return true;
+	    }
+	    return $isVisible;
+	}
 	
 	/**
 	 * 获取当前位置数据.
@@ -187,11 +216,13 @@ abstract class CommonController extends Controller implements AdminModel{
 			if($this->_isHaveSubMap($_data) == true) {
 				break;
 			}
-		}
+		} 
+		
 		/* Get location string */
 		$v = array(
 				1 => $data[$index],
 		);
+		
 		$_location = $this->_getLocationString($v,true);
 		
 		/* Return */
@@ -269,6 +300,9 @@ abstract class CommonController extends Controller implements AdminModel{
 	 * @return mixed bool | string
 	 */
 	public function insert($isRelation = false, $table = null) {
+	    
+	    $this->_before_insert();
+	    
 		$table = (isset($table))?$table:$this->_getTable();
 		$table = D($table);
 		$data  = $table->create();
@@ -280,10 +314,25 @@ abstract class CommonController extends Controller implements AdminModel{
 			} else {
 				$result = $table->add($data);
 			}
-			if($result) return $result; // Return the last insert id.
+			if($result) {
+			    $this->_after_insert();
+			    return $result; // Return the last insert id.
+			}
 		}
+		$this->_after_insert();
 		return $table->getError();
 	}
+	
+	/**
+	 * 插入后的滞后操作.
+	 */
+	protected function _after_insert() {}
+	
+	/**
+	 * 插入前的前置操作.
+	 */
+	protected function _before_insert() {}
+	
 	
 	/**
 	 * 删除操作.
@@ -345,6 +394,7 @@ abstract class CommonController extends Controller implements AdminModel{
 			} else {
 				$result = $table->save($data);
 			}
+			$this->_after_update();
 			return $result;
 		}	
 		

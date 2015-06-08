@@ -42,6 +42,8 @@ return array (
         'LANG_START'        => '开始',
         'LANG_CANCLE'       => '取消',
         'LANG_REDIRCTING'   => '跳转中...',
+        'LANG_AVAILABLE'    => '可用',
+        'LANG_NOT_AVAILABLE'=> '不可用',
         
         /* APP INFO */
         'LANG_APP_VERSION'  => '版本 1.0.0_dev',
@@ -122,7 +124,16 @@ return array (
                         'controller'    => 'Equipment',
                         'action'        => 'manage',
                         'icon_class'    => 'fa fa-wrench',
-                        'sub_map'       => array(),
+                        'sub_map'       => array(
+                            1 => array(
+                                'name'  => '编辑器材',
+                                'controller' => 'Equipment',
+                                'action'     => 'edit',
+                                'icon_class' => 'fa fa-plus-circle',
+                                'visible'    => false,
+                                'sub_map'    => array(),
+                            ),
+                        ),
                     ),
                     3 => array(
                         'name'          => '新增器材',
@@ -174,20 +185,20 @@ return array (
         'LANG_ILLEGAL_WELCOME'        => '抱歉，您的版本不是完整版，请联系管理员！',
         
         /* Login controller */
-        'LANG_LOGIN_WELCOME'         => '欢迎您来到<em>EAS</em>系统后台！',
-        'LANG_WELCOME_SUB'            => '请输入您的用户名和密码来登陆。',
-        'LANG_FORGOT_PASSWORD'      => '忘记密码?',
-        'LANG_KEEP_SIGNED'            => '记住我',
-        'LANG_CREATE_ACCOUNT'        => "还没有账户？<a href=\"#\" class=\"register\">创建账户</a>",
-        'LANG_LOGIN_ERROR'            => "貌似有些问题，请仔细检查下再试喔！",
-        'LANG_ENTER_EMAIL'             => "请在下方输入框输入您的邮件地址来获取新密码！",
-        'LANG_LOGIN_SUCCESSFULLY'    => "登陆成功",
-        'LANG_LOGIN_FAILED'            => "用户名或密码错误",
-        'LANG_EMAIL_SENT'            => "重置密码已发送到指定邮箱，请查收！",
-        'LANG_EMAIL_NOT_SENT'        => "邮件地址错误，请检查后再试。",
-        'LANG_LOG_OUT_SUCCESSFULLY' => "登出成功",
-        'LANG_TO_UNLOCK'            => "请输入密码解锁",
-        'LANG_NOT_ME'                => "我不是",
+        'LANG_LOGIN_WELCOME'            => '欢迎您来到<em>EAS</em>系统后台！',
+        'LANG_WELCOME_SUB'              => '请输入您的用户名和密码来登陆。',
+        'LANG_FORGOT_PASSWORD'          => '忘记密码?',
+        'LANG_KEEP_SIGNED'              => '记住我',
+        'LANG_CREATE_ACCOUNT'           => "还没有账户？<a href=\"#\" class=\"register\">创建账户</a>",
+        'LANG_LOGIN_ERROR'              => "貌似有些问题，请仔细检查下再试喔！",
+        'LANG_ENTER_EMAIL'              => "请在下方输入框输入您的邮件地址来获取新密码！",
+        'LANG_LOGIN_SUCCESSFULLY'       => "登陆成功",
+        'LANG_LOGIN_FAILED'             => "用户名或密码错误",
+        'LANG_EMAIL_SENT'               => "重置密码已发送到指定邮箱，请查收！",
+        'LANG_EMAIL_NOT_SENT'           => "邮件地址错误，请检查后再试。",
+        'LANG_LOG_OUT_SUCCESSFULLY'     => "登出成功",
+        'LANG_TO_UNLOCK'                => "请输入密码解锁",
+        'LANG_NOT_ME'                   => "我不是",
         
         /* Index controller */
         
@@ -208,6 +219,8 @@ return array (
         'LANG_SA_MANAGE_ITEM_TIME'    => '预约时间',
         'LANG_SA_MANAGE_ITEM_STATUS'  => '审核状态',  
         'LANG_SA_SCHEME_FILE'         => '方案文件',
+        'LANG_SA_EQUIPMENT_SELECT'    => '器材选择',
+        'LANG_SA_ADD_LANG'            => '{"ALL":"所有", "SEARCH":"搜索", "SHOW":"显示", "ROWS":"行", "suc_title":"成功","suc_content":"新增成功","fai_title":"失败","fai_content":"新增失败","net_err_content":"网络通讯失败"}',
     
         /* Teacher Equipment */
         'LANG_TE_MANAGE_TITLE'          => '器材管理',
@@ -216,6 +229,9 @@ return array (
         'LANG_TE_MANAGE_ITEM_LEFT_COUNT'=> '剩余数量',
         'LANG_TE_MANAGE_ITEM_STATUS'    => '器材状态',
         'LANG_TE_ADD_TITLE'             => '新增器材',
-    
+        'LANG_TE_ADD_ITEM_NAME'         => '器材名称',
+        'LANG_TE_ADD_ITEM_SUM_COUNT'    => '总数量',
+        'LANG_TE_ADD_SAVE_BUTTON_RESULT'=> '{"suc_title":"成功","suc_content":"新增成功","fai_title":"失败","fai_content":"新增失败","net_err_content":"网络通讯失败"}',
+        'LANG_TE_EDIT_SAVE_BUTTON_RESULT'=> '{"suc_title":"成功","suc_content":"编辑成功","fai_title":"失败","fai_content":"编辑失败","net_err_content":"网络通讯失败"}',    
     
 );

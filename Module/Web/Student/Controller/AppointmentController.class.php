@@ -31,9 +31,12 @@ class AppointmentController extends CommonController {
         }
     }
     
-    public function add() {
-        $this->display();
-    }
+    /**
+     * 插入数据.
+     * 
+     * @see \Common\Controller\CommonController::insert()
+     */
+    public function insert($isRelation = false, $table = 'Appointment') {}
     
     public function upload() {
         new UploadHandler();
